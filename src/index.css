@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #050c05;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050c05;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ff88;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+/* Glass Morphism */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient Borders */
+.gradient-border {
+  position: relative;
+  border: 1px solid transparent;
+  background-image: linear-gradient(#0a0e27, #0a0e27),
+    linear-gradient(135deg, #00f0ff, #c74dff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* Glow Effects */
+.glow-green {
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+}
+
+.glow-green:hover {
+  box-shadow: 0 0 50px rgba(0, 255, 136, 0.6);
+}
+
+.glow-purple {
+  box-shadow: 0 0 30px rgba(199, 77, 255, 0.3);
+}
+
+.glow-purple:hover {
+  box-shadow: 0 0 50px rgba(199, 77, 255, 0.6);
+}
+
+/* Text Gradients */
+.text-gradient {
+  background: linear-gradient(135deg, #00ff88, #059669, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button Base */
+.btn-base {
+  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.btn-primary {
+  @apply btn-base bg-gradient-to-r from-accent-cyan to-accent-blue text-dark-bg hover:shadow-lg hover:scale-105;
+}
+
+.btn-secondary {
+  @apply btn-base border-2 border-accent-cyan text-accent-cyan hover:bg-accent-cyan hover:text-dark-bg transition-all;
+}
+
+.btn-ghost {
+  @apply btn-base text-text-primary border border-text-secondary hover:border-accent-cyan hover:text-accent-cyan transition-all;
+}
+
+/* Card Animations */
+.card-hover {
+  @apply transition-all duration-300 hover:-translate-y-2;
+}
+
+/* Section Padding */
+.section-py {
+  @apply py-20 md:py-28 lg:py-32;
+}
+
+/* Container */
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Three.js Canvas */
+#canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive Typography */
+h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  @apply text-4xl md:text-6xl lg:text-7xl font-bold leading-tight;
+}
+
+h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  @apply text-3xl md:text-5xl font-bold leading-tight;
+}
+
+h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  @apply text-2xl md:text-3xl font-bold;
+}
+
+p {
+  @apply text-base md:text-lg text-text-secondary leading-relaxed;
+}
+
+/* Cyber Grid Background */
+.cyber-grid {
+  background-image:
+    linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Scan Line Effect */
+.scan-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(0, 255, 136, 0.2),
+      rgba(0, 255, 136, 0.5),
+      rgba(0, 255, 136, 0.2),
+      transparent);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Glitch Animation */
+.animate-glitch {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* Neural Link Sidebar Glass Effect */
+.glass {
+  background: rgba(10, 14, 39, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mono {
+  font-family: 'Space Mono', 'Fira Code', monospace;
+}
