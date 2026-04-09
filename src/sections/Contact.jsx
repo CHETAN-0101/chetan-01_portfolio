@@ -91,7 +91,7 @@ const Contact = () => {
             Let's <span className="text-gradient">Connect</span>
           </h2>
           <p className="text-text-secondary max-w-2xl mx-auto">
-            Have an exciting project or opportunity? I'd love to hear from you. Reach out and let's create something amazing together.
+            Currently open to internships and exciting collaborations. Whether you have a question or just want to say hi, my inbox is always open.
           </p>
           <div className="w-16 h-1 bg-gradient-to-r from-accent-cyan to-accent-purple rounded-full mx-auto mt-4"></div>
         </motion.div>
@@ -106,9 +106,9 @@ const Contact = () => {
             className="space-y-8"
           >
             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-display font-bold mb-2">Get In Touch</h3>
+              <h3 className="text-2xl font-display font-bold mb-2 text-white">Get In Touch</h3>
               <p className="text-text-secondary">
-                Whether it's a question or just a friendly hello, feel free to reach out!
+                I'm currently based in India and looking for opportunities in Software Engineering, Cybersecurity, or ML.
               </p>
             </motion.div>
 
@@ -117,20 +117,23 @@ const Contact = () => {
               {
                 icon: '📧',
                 label: 'Email',
-                value: 'chetan.jadhav@example.com',
-                href: 'mailto:chetan.jadhav@example.com',
+                value: 'chetan.jadhav@outlook.com',
+                href: 'mailto:chetan.jadhav@outlook.com',
+                theme: 'accent-cyan'
               },
               {
                 icon: '💼',
                 label: 'LinkedIn',
-                value: 'linkedin.com/in/chetanjadhav',
-                href: 'https://linkedin.com',
+                value: 'linkedin.com/in/chetanjadhav01',
+                href: 'https://linkedin.com/in/chetanjadhav01',
+                theme: 'accent-blue'
               },
               {
                 icon: '🐙',
                 label: 'GitHub',
-                value: 'github.com/chetanjadhav',
-                href: 'https://github.com',
+                value: 'github.com/Chetan-0101',
+                href: 'https://github.com/Chetan-0101',
+                theme: 'accent-purple'
               },
             ].map((contact, idx) => (
               <motion.a
@@ -139,15 +142,24 @@ const Contact = () => {
                 href={contact.href}
                 target="_blank"
                 rel="noreferrer"
-                className="glass-effect rounded-lg p-6 group hover:border-accent-cyan/50 transition-all"
+                className="group relative block p-[1px] rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,136,0.15)]"
               >
-                <div className="flex items-start gap-4">
-                  <div className="text-3xl mt-1">{contact.icon}</div>
-                  <div>
-                    <h4 className="font-display font-bold mb-1">{contact.label}</h4>
-                    <p className="text-text-secondary group-hover:text-accent-cyan transition-colors">
-                      {contact.value}
-                    </p>
+                {/* Animated Border Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/5 group-hover:from-accent-cyan/40 group-hover:to-accent-purple/40 transition-all duration-500" />
+
+                <div className="relative bg-dark-bg/90 backdrop-blur-xl rounded-2xl p-6 transition-colors duration-300 group-hover:bg-dark-bg/40">
+                  <div className="flex items-start gap-5">
+                    <div className="text-4xl filter drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] group-hover:scale-110 transition-transform duration-300">
+                      {contact.icon}
+                    </div>
+                    <div>
+                      <h4 className="font-display font-bold mb-1 text-white/90 group-hover:text-white transition-colors">
+                        {contact.label}
+                      </h4>
+                      <p className="text-text-secondary font-mono text-sm group-hover:text-accent-cyan transition-colors">
+                        {contact.value}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </motion.a>
@@ -155,24 +167,28 @@ const Contact = () => {
 
             {/* Social Links */}
             <motion.div variants={itemVariants}>
-              <h4 className="font-display font-bold mb-4">Follow Me</h4>
+              <h4 className="font-display font-bold mb-4 text-white/80 uppercase tracking-widest text-xs">Digital Footprint</h4>
               <div className="flex gap-4">
                 {[
                   { icon: '𝕏', href: 'https://twitter.com', label: 'Twitter' },
-                  { icon: 'in', href: 'https://linkedin.com', label: 'LinkedIn' },
-                  { icon: '⚙️', href: 'https://github.com', label: 'GitHub' },
+                  { icon: 'in', href: 'https://linkedin.com/in/chetanjadhav01', label: 'LinkedIn' },
+                  { icon: '⚙️', href: 'https://github.com/Chetan-0101', label: 'GitHub' },
                 ].map((social, idx) => (
                   <motion.a
                     key={idx}
                     href={social.href}
                     target="_blank"
                     rel="noreferrer"
-                    whileHover={{ scale: 1.2, rotate: 5 }}
+                    whileHover={{
+                      scale: 1.15,
+                      rotate: 8,
+                      boxShadow: '0 0 20px rgba(0,255,136,0.3)'
+                    }}
                     whileTap={{ scale: 0.9 }}
-                    className="w-12 h-12 rounded-full glass-effect flex items-center justify-center hover:border-accent-cyan/50 transition-all"
+                    className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-accent-cyan/50 hover:bg-accent-cyan/5 transition-all duration-300"
                     title={social.label}
                   >
-                    {social.icon}
+                    <span className="text-lg text-white/60 group-hover:text-white">{social.icon}</span>
                   </motion.a>
                 ))}
               </div>
@@ -189,88 +205,100 @@ const Contact = () => {
             <form
               ref={formRef}
               onSubmit={handleSubmit}
-              className="glass-effect rounded-xl p-8 border border-accent-cyan/20"
+              className="relative p-[1px] rounded-3xl overflow-hidden bg-white/5 border border-white/5 hover:border-accent-cyan/20 transition-all duration-500 shadow-2xl"
             >
-              {submitSuccess ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="flex flex-col items-center justify-center py-12"
-                >
-                  <div className="text-5xl mb-4">✨</div>
-                  <h3 className="text-2xl font-bold font-display mb-2">Thank You!</h3>
-                  <p className="text-text-secondary text-center">
-                    I'll get back to you as soon as possible.
-                  </p>
-                </motion.div>
-              ) : (
-                <motion.div
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate="visible"
-                  className="space-y-6"
-                >
-                  {/* Name Field */}
-                  <motion.div variants={itemVariants}>
-                    <label className="block text-sm font-display font-bold mb-2">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Your name"
-                      className="w-full bg-dark-bg border border-accent-cyan/30 rounded-lg px-4 py-3 text-white placeholder-text-secondary focus:border-accent-cyan focus:outline-none transition-all"
-                    />
-                  </motion.div>
+              {/* Internal glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent-cyan/5 via-transparent to-accent-purple/5 pointer-events-none" />
 
-                  {/* Email Field */}
-                  <motion.div variants={itemVariants}>
-                    <label className="block text-sm font-display font-bold mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="your@email.com"
-                      className="w-full bg-dark-bg border border-accent-cyan/30 rounded-lg px-4 py-3 text-white placeholder-text-secondary focus:border-accent-cyan focus:outline-none transition-all"
-                    />
-                  </motion.div>
-
-                  {/* Message Field */}
-                  <motion.div variants={itemVariants}>
-                    <label className="block text-sm font-display font-bold mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      placeholder="Tell me about your project or opportunity..."
-                      rows={5}
-                      className="w-full bg-dark-bg border border-accent-cyan/30 rounded-lg px-4 py-3 text-white placeholder-text-secondary focus:border-accent-cyan focus:outline-none transition-all resize-none"
-                    ></textarea>
-                  </motion.div>
-
-                  {/* Submit Button */}
-                  <motion.button
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              <div className="relative bg-dark-bg/60 backdrop-blur-3xl p-8 rounded-3xl">
+                {submitSuccess ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center justify-center py-12"
                   >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                  </motion.button>
-                </motion.div>
-              )}
+                    <div className="text-5xl mb-4 animate-bounce">✨</div>
+                    <h3 className="text-2xl font-bold font-display mb-2 text-white">Transmission Received</h3>
+                    <p className="text-text-secondary text-center font-mono text-sm">
+                      Connecting to Chetan's neural index... <br />I'll get back to you soon.
+                    </p>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="space-y-6"
+                  >
+                    {/* Name Field */}
+                    <motion.div variants={itemVariants}>
+                      <label className="block text-xs font-mono font-bold mb-2 uppercase tracking-widest text-[#00ff88]">
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        placeholder="e.g. John Doe"
+                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:border-accent-cyan focus:outline-none focus:ring-1 focus:ring-accent-cyan/20 transition-all font-mono text-sm"
+                      />
+                    </motion.div>
+
+                    {/* Email Field */}
+                    <motion.div variants={itemVariants}>
+                      <label className="block text-xs font-mono font-bold mb-2 uppercase tracking-widest text-[#00ff88]">
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        placeholder="john@example.com"
+                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:border-accent-cyan focus:outline-none focus:ring-1 focus:ring-accent-cyan/20 transition-all font-mono text-sm"
+                      />
+                    </motion.div>
+
+                    {/* Message Field */}
+                    <motion.div variants={itemVariants}>
+                      <label className="block text-xs font-mono font-bold mb-2 uppercase tracking-widest text-[#00ff88]">
+                        Message
+                      </label>
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        placeholder="Type your message here..."
+                        rows={5}
+                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/20 focus:border-accent-cyan focus:outline-none focus:ring-1 focus:ring-accent-cyan/20 transition-all resize-none font-mono text-sm"
+                      ></textarea>
+                    </motion.div>
+
+                    {/* Submit Button */}
+                    <motion.button
+                      variants={itemVariants}
+                      whileHover={{
+                        scale: 1.02,
+                        boxShadow: '0 0 25px rgba(0,255,136,0.2)'
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-4 rounded-xl font-mono font-bold text-sm tracking-[0.2em] uppercase transition-all duration-300 relative overflow-hidden group/btn"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan to-accent-purple opacity-90 group-hover/btn:opacity-100 transition-opacity" />
+                      <span className="relative z-10 text-dark-bg flex items-center justify-center gap-2">
+                        {isSubmitting ? 'Syncing...' : 'Initiate Contact'}
+                        {!isSubmitting && <span className="opacity-50 tracking-normal">---&gt;</span>}
+                      </span>
+                    </motion.button>
+                  </motion.div>
+                )}
+              </div>
             </form>
           </motion.div>
         </div>

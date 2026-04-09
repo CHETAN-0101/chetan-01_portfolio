@@ -6,11 +6,35 @@ import * as THREE from 'three'
 // ─── Neural network background geometry ──────────────────────────────────────
 
 function buildNeural(nodeCount = 80, spread = 14, edgeThreshold = 3.2) {
-  const nodes = Array.from({ length: nodeCount }, () => new THREE.Vector3(
-    (Math.random() - 0.5) * spread,
-    (Math.random() - 0.5) * spread * 0.65,
-    (Math.random() - 0.5) * spread * 0.4,
-  ))
+  const nodes = []
+
+  // Helix parameters
+  const height = spread * 0.8
+  const turns = 2.5
+  const radius = spread * 0.25
+
+  for (let i = 0; i < nodeCount; i++) {
+    if (i < nodeCount * 0.7) {
+      // Create two intertwined spirals
+      const isStrandB = i % 2 === 0
+      const fraction = (i / (nodeCount * 0.7))
+      const angle = fraction * Math.PI * 2 * turns + (isStrandB ? Math.PI : 0)
+      const y = (fraction - 0.5) * height
+
+      nodes.push(new THREE.Vector3(
+        radius * Math.cos(angle),
+        y,
+        radius * Math.sin(angle)
+      ))
+    } else {
+      // Scattered surrounding nodes for depth
+      nodes.push(new THREE.Vector3(
+        (Math.random() - 0.5) * spread,
+        (Math.random() - 0.5) * spread * 0.7,
+        (Math.random() - 0.5) * spread * 0.5,
+      ))
+    }
+  }
 
   const edgePoints = []
   for (let i = 0; i < nodes.length; i++) {
@@ -132,7 +156,7 @@ const StatsCard = () => {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 const HeroScene = () => {
-  const { nodePositions, edgePositionsArr } = useMemo(() => buildNeural(90, 15, 3.4), [])
+  const { nodePositions, edgePositionsArr } = useMemo(() => buildNeural(90, 15, 3.2), [])
 
   const nodeBuf = useMemo(() => {
     const geo = new THREE.BufferGeometry()
@@ -172,12 +196,12 @@ const HeroScene = () => {
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime()
     if (groupRef.current) {
-      groupRef.current.rotation.y = Math.sin(t * 0.06) * 0.12
-      groupRef.current.rotation.x = Math.sin(t * 0.04) * 0.05
+      groupRef.current.rotation.y = Math.sin(t * 0.15) * 0.12
+      groupRef.current.rotation.x = Math.sin(t * 0.1) * 0.05
     }
     if (geometryRef.current) {
       // Rotation for the outer wireframes
-      geometryRef.current.rotation.y = t * 0.08
+      geometryRef.current.rotation.y = t * 0.2
       geometryRef.current.rotation.z = Math.sin(t * 0.1) * 0.15
 
       // Floating pulse
@@ -194,15 +218,22 @@ const HeroScene = () => {
       {/* Neural network constellation */}
       <group ref={groupRef}>
         <lineSegments geometry={edgeBuf}>
-          <lineBasicMaterial color="#00ff88" transparent opacity={0.12} />
+          <lineBasicMaterial
+            color="#00ffa2"
+            transparent
+            opacity={0.4}
+            blending={THREE.AdditiveBlending}
+            depthWrite={false}
+          />
         </lineSegments>
         <points geometry={nodeBuf}>
           <pointsMaterial
             color="#00ff88"
-            size={0.07}
+            size={0.12}
             sizeAttenuation
             transparent
-            opacity={0.7}
+            opacity={0.9}
+            blending={THREE.AdditiveBlending}
             depthWrite={false}
           />
         </points>

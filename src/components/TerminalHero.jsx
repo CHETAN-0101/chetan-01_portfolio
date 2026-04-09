@@ -45,8 +45,8 @@ const CMD_BLOCKS = [
 ]
 
 // Typing speeds
-const CMD_SPEED = 40
-const OUTPUT_SPEED = 10
+const CMD_SPEED = 80
+const OUTPUT_SPEED = 30
 const LINE_PAUSE = 100
 const BLOCK_PAUSE = 400
 const END_PAUSE = 2500
