@@ -7,10 +7,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: none;
 }
 
 html {
   scroll-behavior: smooth;
+  cursor: none;
 }
 
 body {
@@ -18,6 +20,7 @@ body {
   background-color: #050c05;
   color: #ffffff;
   overflow-x: hidden;
+  cursor: none;
 }
 
 /* Custom Scrollbar */

@@ -2,47 +2,27 @@ import { motion } from 'framer-motion'
 
 const timeline = [
   {
-    year: '2024 – Present',
-    icon: '🚀',
-    title: 'Full-Stack Development',
-    org: 'Self-Directed / Freelance',
-    description: 'Building production-ready applications across Android, Web, and ML domains.',
+    year: '2025 July – Aug',
+    icon: '🛡️',
+    title: 'Cyber Security Intern',
+    org: 'TheDropOrg',
+    description: 'Specializing in vulnerability assessment, penetration testing, and security auditing for digital assets.',
     color: 'cyan',
-    milestones: ['Shipped 15+ projects', 'Open-source contributions', 'Hackathon victories'],
+    milestones: ['Vulnerability Assessment', 'Pentesting', 'Secure Coding Practices'],
   },
   {
-    year: '2023 – 2024',
-    icon: '🔐',
-    title: 'Cyber Security Deep Dive',
-    org: 'Independent Research',
-    description: 'Explored penetration testing, network security, and OWASP vulnerabilities.',
+    year: '2026 Jan – March',
+    icon: '☁️',
+    title: 'Virtual Internship',
+    org: 'Zscaler',
+    description: 'In-depth exploration of cloud security architectures, SASE, and zero-trust security models.',
     color: 'purple',
-    milestones: ['Bug bounty participation', 'Security certifications', 'CTF competitions'],
-  },
-  {
-    year: '2022 – 2023',
-    icon: '🎨',
-    title: 'UI/UX Design Focus',
-    org: 'Design Studio Internship',
-    description: 'Designed scalable design systems and developed design thinking frameworks.',
-    color: 'cyan',
-    milestones: ['Design system architecture', 'User research methodologies', 'Figma expertise'],
-  },
-  {
-    year: '2021 – 2022',
-    icon: '🤖',
-    title: 'Machine Learning Intro',
-    org: 'Academic + Self-Learning',
-    description: 'Started with data analysis, progressed to building ML models and pipelines.',
-    color: 'purple',
-    milestones: ['TensorFlow proficiency', 'Data visualization', 'Model optimization'],
+    milestones: ['Cloud Security', 'Zero Trust Architecture', 'Data Protection'],
   },
 ]
 
 const achievements = [
-  { icon: '🏆', label: 'Hackathon Winner', detail: '3× champion' },
-  { icon: '⭐', label: 'GitHub Stars', detail: '500+' },
-  { icon: '📱', label: 'Play Store App', detail: 'Featured' },
+  { icon: '🏆', label: 'LeetCode +400', detail: 'Problem Solver' },
   { icon: '🔐', label: 'Security Researcher', detail: 'Bug Bounty' },
   { icon: '🎨', label: 'Design System Lead', detail: 'End-to-end' },
   { icon: '🤖', label: 'ML Deployment', detail: 'Production' },
@@ -122,7 +102,15 @@ const Experience = () => {
                         <span className="text-2xl">{item.icon}</span>
                         <div>
                           <h3 className="text-xl font-display font-bold text-white leading-tight">{item.title}</h3>
-                          <p className="text-xs text-white/35 font-mono mt-0.5">{item.org}</p>
+                          <p className={`inline-block text-[10px] font-mono mt-1 px-2 py-0.5 rounded border ${c.text} backdrop-blur-sm shadow-[0_0_10px_rgba(0,0,0,0.5)]`}
+                            style={{
+                              background: `${c.dot}10`,
+                              borderColor: `${c.dot}40`,
+                              letterSpacing: '0.1em'
+                            }}
+                          >
+                            {item.org}
+                          </p>
                         </div>
                       </div>
 

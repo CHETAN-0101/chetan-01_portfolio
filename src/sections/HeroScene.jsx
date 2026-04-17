@@ -75,6 +75,38 @@ function makeHexGeo(r = 1, tilt = 0) {
 const ROLES = ['MACHINE LEARNING', 'APP DEVELOPER', 'CYBER SECURITY', 'UI / UX DESIGNER', 'FULL STACK DEV']
 
 // ─── Stats card ───────────────────────────────────────────────────────────────
+const CountUp = ({ to, duration = 1.5, suffix = '' }) => {
+  const [count, setCount] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    setIsVisible(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isVisible) return
+    let start = 0
+    const end = parseInt(to)
+    if (isNaN(end)) return
+
+    let startTime = null
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1)
+      // Ease out quad
+      const easeProgress = progress * (2 - progress)
+      setCount(Math.floor(easeProgress * (end - start) + start))
+      if (progress < 1) {
+        window.requestAnimationFrame(step)
+      }
+    }
+    window.requestAnimationFrame(step)
+  }, [to, duration, isVisible])
+
+  return <span>{count}{suffix}</span>
+}
+
+// ─── Stats card ───────────────────────────────────────────────────────────────
 const StatsCard = () => {
   const [roleIdx, setRoleIdx] = useState(0)
   const [fadeIn, setFadeIn] = useState(true)
@@ -138,13 +170,15 @@ const StatsCard = () => {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', width: '100%', gap: '0 16px' }}>
           {[
-            { num: '15+', label: 'Projects' },
-            { num: '8x', label: 'Hackathons' },
-            { num: '3+', label: 'Yrs Coding' },
-          ].map(({ num, label }) => (
+            { num: '10', label: 'Projects', suffix: '' },
+            { num: '400+', label: 'LeetCode', suffix: '+' },
+            { num: '3+', label: 'Years of Coding', suffix: '+' },
+          ].map(({ num, label, suffix }) => (
             <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
-              <span style={{ fontSize: 26, fontWeight: 900, color: '#00ff88', fontFamily: 'sans-serif', lineHeight: 1 }}>{num}</span>
-              <span style={{ fontSize: 9, fontFamily: 'monospace', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.18em', textTransform: 'uppercase' }}>{label}</span>
+              <span style={{ fontSize: 26, fontWeight: 900, color: '#00ff88', fontFamily: 'sans-serif', lineHeight: 1 }}>
+                <CountUp to={num} suffix={suffix} />
+              </span>
+              <span style={{ fontSize: 9, fontFamily: 'monospace', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.18em', textTransform: 'uppercase', textAlign: 'center' }}>{label}</span>
             </div>
           ))}
         </div>

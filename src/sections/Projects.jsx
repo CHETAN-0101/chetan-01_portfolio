@@ -7,72 +7,52 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'SecureChat App',
-      category: 'app-dev',
-      description: 'End-to-end encrypted messaging app with real-time database',
-      tech: ['Kotlin', 'Firebase', 'Encryption', 'Android'],
+      title: 'SmartFileCompressor',
+      category: 'utility',
+      description: 'Efficient file compression tool utilizing Huffman coding and LZW algorithms for optimized storage.',
+      tech: ['Python', 'C++', 'Data Structures', 'Algorithms'],
       github: 'https://github.com',
       demo: 'https://github.com',
-      icon: '🔐',
+      icon: '🗜️',
     },
     {
       id: 2,
-      title: 'ML Image Classifier',
+      title: 'pyq_predictor',
       category: 'ml',
-      description: 'Deep learning model for medical image classification',
-      tech: ['Python', 'TensorFlow', 'OpenCV', 'Data Science'],
+      description: 'Machine Learning model designed to predict important questions by analyzing patterns in previous year papers.',
+      tech: ['Python', 'Scikit-Learn', 'NLP', 'Pandas'],
       github: 'https://github.com',
       demo: 'https://github.com',
-      icon: '🧠',
+      icon: '📈',
     },
     {
       id: 3,
-      title: 'Design System UI Kit',
-      category: 'design',
-      description: 'Comprehensive UI component library with design tokens',
-      tech: ['Figma', 'React', 'Storybook', 'Design Systems'],
-      github: 'https://github.com',
-      demo: 'https://github.com',
-      icon: '🎨',
-    },
-    {
-      id: 4,
-      title: 'Network Analyzer Tool',
+      title: 'password_analyzer',
       category: 'security',
-      description: 'Network packet analysis and security assessment tool',
-      tech: ['Python', 'Scapy', 'Security', 'CLI'],
+      description: 'Advanced security utility that evaluates password strength, entropy, and potential vulnerabilities.',
+      tech: ['Python', 'Security', 'Regex', 'Cryptography'],
       github: 'https://github.com',
       demo: 'https://github.com',
       icon: '🛡️',
     },
     {
-      id: 5,
-      title: 'Cross-Platform Todo App',
-      category: 'app-dev',
-      description: 'Full-featured todo application with cloud sync',
-      tech: ['Flutter', 'Firebase', 'Provider', 'iOS/Android'],
+      id: 4,
+      title: 'labdrop',
+      category: 'productivity',
+      description: 'Intelligent file management and smart drop technology for seamless laboratory collaboration.',
+      tech: ['React', 'Node.js', 'Socket.io', 'TailwindCSS'],
       github: 'https://github.com',
       demo: 'https://github.com',
-      icon: '✓',
-    },
-    {
-      id: 6,
-      title: 'Cyber Threat Dashboard',
-      category: 'security',
-      description: 'Real-time security monitoring and threat visualization',
-      tech: ['React', 'Node.js', 'D3.js', 'Cyber Security'],
-      github: 'https://github.com',
-      demo: 'https://github.com',
-      icon: '📊',
+      icon: '💧',
     },
   ]
 
   const categories = [
     { id: 'all', label: 'All Projects' },
-    { id: 'app-dev', label: 'App Development' },
-    { id: 'security', label: 'Cyber Security' },
-    { id: 'design', label: 'Design' },
+    { id: 'utility', label: 'Utilities' },
     { id: 'ml', label: 'Machine Learning' },
+    { id: 'security', label: 'Cyber Security' },
+    { id: 'productivity', label: 'Productivity' },
   ]
 
   const filteredProjects =
@@ -128,28 +108,7 @@ const Projects = () => {
           <div className="w-16 h-1 bg-gradient-to-r from-accent-cyan to-accent-purple rounded-full"></div>
         </motion.div>
 
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap gap-3 mb-12"
-        >
-          {categories.map((cat) => (
-            <motion.button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={`px-6 py-2 rounded-full font-display font-medium transition-all duration-300 ${activeCategory === cat.id
-                  ? 'bg-gradient-to-r from-accent-cyan to-accent-purple text-dark-bg shadow-[0_0_15px_rgba(0,255,136,0.3)]'
-                  : 'border border-text-secondary/50 text-text-secondary hover:border-accent-cyan hover:text-accent-cyan'
-                }`}
-            >
-              {cat.label}
-            </motion.button>
-          ))}
-        </motion.div>
+
 
         {/* Projects Grid */}
         <motion.div
@@ -193,27 +152,6 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* Links */}
-                  <div className="mt-auto flex gap-3">
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      className="flex-1 px-4 py-2 rounded-lg text-center text-sm font-display font-medium border border-accent-cyan text-accent-cyan hover:bg-accent-cyan hover:text-dark-bg transition-all"
-                    >
-                      GitHub
-                    </motion.a>
-                    <motion.a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      className="flex-1 px-4 py-2 rounded-lg text-center text-sm font-display font-medium bg-gradient-to-r from-accent-cyan to-accent-blue text-dark-bg hover:shadow-lg transition-all"
-                    >
-                      Demo
-                    </motion.a>
-                  </div>
                 </div>
 
                 {/* Hover Overlay */}

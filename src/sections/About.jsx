@@ -122,9 +122,9 @@ const About = () => {
             className="grid grid-cols-2 gap-6"
           >
             {[
-              { label: 'Projects Shipped', target: 15, icon: '🚀' },
+              { label: 'Projects', target: 10, icon: '🚀' },
               { label: 'Tech Stack', target: 25, icon: '⚙️' },
-              { label: 'Hackathons', target: 8, icon: '🏆' },
+              { label: 'LeetCode Solved', target: 400, icon: '🏆' },
               { label: 'Years Coding', target: 3, icon: '📚' },
             ].map((stat, idx) => (
               <motion.div

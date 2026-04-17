@@ -87,13 +87,18 @@ const Contact = () => {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 tracking-tight">
             Let's <span className="text-gradient">Connect</span>
           </h2>
-          <p className="text-text-secondary max-w-2xl mx-auto">
-            Currently open to internships and exciting collaborations. Whether you have a question or just want to say hi, my inbox is always open.
-          </p>
-          <div className="w-16 h-1 bg-gradient-to-r from-accent-cyan to-accent-purple rounded-full mx-auto mt-4"></div>
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-text-secondary max-w-2xl mx-auto">
+              Currently open to internships and exciting collaborations. Whether you have a question or just want to say hi, my inbox is always open.
+            </p>
+            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#00ff88]/40 animate-pulse">
+              [ Protocol: Secure Link Active ]
+            </div>
+          </div>
+          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-accent-cyan to-transparent mx-auto mt-6 opacity-30"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -105,90 +110,160 @@ const Contact = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-display font-bold mb-2 text-white">Get In Touch</h3>
-              <p className="text-text-secondary">
-                I'm currently based in India and looking for opportunities in Software Engineering, Cybersecurity, or ML.
-              </p>
+            <motion.div variants={itemVariants} className="relative group">
+              <div className="absolute -left-6 top-0 w-1 h-full bg-gradient-to-b from-[#00ff88] to-transparent opacity-50"></div>
+              <h3 className="text-3xl font-display font-bold mb-4 text-white tracking-tight">
+                <span className="text-[#00ff88]">Establish</span> Connection
+              </h3>
+              <div className="space-y-4 text-text-secondary leading-relaxed backdrop-blur-sm bg-white/[0.02] p-4 rounded-xl border border-white/5">
+                <p>
+                  I'm currently based in <span className="text-white font-medium">India</span> and open to global opportunities in Software Engineering, Cybersecurity, and ML.
+                </p>
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-[0.2em] text-[#00ff88]/60">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00ff88]"></span>
+                      Availability: Open
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00ff88]"></span>
+                      Response: ~24h
+                    </span>
+                  </div>
+                  <motion.a
+                    href="/resume.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-[#00ff88]/30 bg-[#00ff88]/5 text-[#00ff88] font-mono text-xs uppercase tracking-widest hover:bg-[#00ff88]/10 transition-all w-full sm:w-auto"
+                  >
+                    <span className="text-lg">📄</span>
+                    Download Resume
+                  </motion.a>
+                </div>
+              </div>
             </motion.div>
 
-            {/* Contact Methods */}
-            {[
-              {
-                icon: '📧',
-                label: 'Email',
-                value: 'chetan.jadhav@outlook.com',
-                href: 'mailto:chetan.jadhav@outlook.com',
-                theme: 'accent-cyan'
-              },
-              {
-                icon: '💼',
-                label: 'LinkedIn',
-                value: 'linkedin.com/in/chetanjadhav01',
-                href: 'https://linkedin.com/in/chetanjadhav01',
-                theme: 'accent-blue'
-              },
-              {
-                icon: '🐙',
-                label: 'GitHub',
-                value: 'github.com/Chetan-0101',
-                href: 'https://github.com/Chetan-0101',
-                theme: 'accent-purple'
-              },
-            ].map((contact, idx) => (
-              <motion.a
-                key={idx}
-                variants={itemVariants}
-                href={contact.href}
-                target="_blank"
-                rel="noreferrer"
-                className="group relative block p-[1px] rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,136,0.15)]"
-              >
-                {/* Animated Border Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/5 group-hover:from-accent-cyan/40 group-hover:to-accent-purple/40 transition-all duration-500" />
-
-                <div className="relative bg-dark-bg/90 backdrop-blur-xl rounded-2xl p-6 transition-colors duration-300 group-hover:bg-dark-bg/40">
-                  <div className="flex items-start gap-5">
-                    <div className="text-4xl filter drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] group-hover:scale-110 transition-transform duration-300">
-                      {contact.icon}
+            {/* Contact Methods - Modern Protocol Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                {
+                  icon: '📧',
+                  label: 'Gmail',
+                  value: 'chetan.jadhav@gmail.com',
+                  href: 'mailto:chetan.jadhav@gmail.com',
+                  color: 'from-red-500/20 to-red-600/20',
+                  borderColor: 'group-hover:border-red-500/50',
+                  protocol: 'SMTP/GMAIL',
+                  id: '01'
+                },
+                {
+                  icon: '📧',
+                  label: 'Proton',
+                  value: 'chetan.jadhav@proton.me',
+                  href: 'mailto:chetan.jadhav@proton.me',
+                  color: 'from-purple-500/20 to-purple-600/20',
+                  borderColor: 'group-hover:border-purple-500/50',
+                  protocol: 'SMTP/PROTON',
+                  id: '02'
+                },
+                {
+                  icon: '📧',
+                  label: 'Tuta',
+                  value: 'chetan.jadhav@tuta.io',
+                  href: 'mailto:chetan.jadhav@tuta.io',
+                  color: 'from-emerald-500/20 to-emerald-600/20',
+                  borderColor: 'group-hover:border-emerald-500/50',
+                  protocol: 'SMTP/TUTA',
+                  id: '03'
+                },
+                {
+                  icon: '💼',
+                  label: 'LinkedIn',
+                  value: 'chetanjadhav01',
+                  href: 'https://linkedin.com/in/chetanjadhav01',
+                  color: 'from-sky-500/20 to-sky-600/20',
+                  borderColor: 'group-hover:border-sky-500/50',
+                  protocol: 'HTTPS/LINKEDIN',
+                  id: '04'
+                },
+                {
+                  icon: '🐙',
+                  label: 'GitHub',
+                  value: 'Chetan-0101',
+                  href: 'https://github.com/Chetan-0101',
+                  color: 'from-indigo-500/20 to-indigo-600/20',
+                  borderColor: 'group-hover:border-indigo-500/50',
+                  protocol: 'HTTPS/GITHUB',
+                  id: '05'
+                },
+              ].map((contact, idx) => (
+                <motion.a
+                  key={idx}
+                  variants={itemVariants}
+                  href={contact.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group relative block"
+                >
+                  <div className={`relative bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-xl p-4 transition-all duration-300 ${contact.borderColor} hover:bg-white/[0.06] hover:-translate-y-1`}>
+                    {/* Corner Accent */}
+                    <div className="absolute top-0 right-0 w-8 h-8 opacity-20 group-hover:opacity-100 transition-opacity overflow-hidden pointer-events-none">
+                      <div className="absolute top-0 right-0 w-full h-[1px] bg-white"></div>
+                      <div className="absolute top-0 right-0 h-full w-[1px] bg-white"></div>
                     </div>
-                    <div>
-                      <h4 className="font-display font-bold mb-1 text-white/90 group-hover:text-white transition-colors">
-                        {contact.label}
-                      </h4>
-                      <p className="text-text-secondary font-mono text-sm group-hover:text-accent-cyan transition-colors">
+
+                    <div className="flex items-center gap-4 mb-3">
+                      <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${contact.color} flex items-center justify-center text-2xl filter drop-shadow-lg group-hover:scale-110 transition-transform`}>
+                        {contact.icon}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex justify-between items-center mb-1">
+                          <span className="text-[10px] font-mono text-white/40 tracking-wider">PROTOCOL: {contact.protocol}</span>
+                          <span className="text-[10px] font-mono text-[#00ff88]/60">#{contact.id}</span>
+                        </div>
+                        <h4 className="font-display font-bold text-white group-hover:text-[#00ff88] transition-colors">{contact.label}</h4>
+                      </div>
+                    </div>
+
+                    <div className="bg-black/20 rounded-lg px-3 py-2 flex items-center justify-between group-hover:bg-black/40 transition-colors">
+                      <p className="text-text-secondary font-mono text-[11px] truncate pr-4">
                         {contact.value}
                       </p>
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#00ff88] animate-pulse"></div>
                     </div>
                   </div>
-                </div>
-              </motion.a>
-            ))}
+                </motion.a>
+              ))}
+            </div>
 
-            {/* Social Links */}
-            <motion.div variants={itemVariants}>
-              <h4 className="font-display font-bold mb-4 text-white/80 uppercase tracking-widest text-xs">Digital Footprint</h4>
-              <div className="flex gap-4">
+            {/* Social Links - Digital Footprint */}
+            <motion.div variants={itemVariants} className="pt-4">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                <h4 className="font-display font-medium text-white/50 uppercase tracking-[0.3em] text-[10px]">Digital Footprint</h4>
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+              </div>
+
+              <div className="flex flex-wrap gap-4">
                 {[
-                  { icon: '𝕏', href: 'https://twitter.com', label: 'Twitter' },
-                  { icon: 'in', href: 'https://linkedin.com/in/chetanjadhav01', label: 'LinkedIn' },
-                  { icon: '⚙️', href: 'https://github.com/Chetan-0101', label: 'GitHub' },
+                  { icon: '𝕏', href: 'https://twitter.com', label: 'Twitter', color: 'hover:text-white hover:bg-white/10' },
+                  { icon: '💼', href: 'https://linkedin.com/in/chetanjadhav01', label: 'LinkedIn', color: 'hover:text-sky-400 hover:bg-sky-400/10' },
+                  { icon: '🐙', href: 'https://github.com/Chetan-0101', label: 'GitHub', color: 'hover:text-purple-400 hover:bg-purple-400/10' },
+                  { icon: '📸', href: 'https://instagram.com', label: 'Instagram', color: 'hover:text-pink-400 hover:bg-pink-400/10' },
                 ].map((social, idx) => (
                   <motion.a
                     key={idx}
                     href={social.href}
                     target="_blank"
                     rel="noreferrer"
-                    whileHover={{
-                      scale: 1.15,
-                      rotate: 8,
-                      boxShadow: '0 0 20px rgba(0,255,136,0.3)'
-                    }}
-                    whileTap={{ scale: 0.9 }}
-                    className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:border-accent-cyan/50 hover:bg-accent-cyan/5 transition-all duration-300"
+                    whileHover={{ y: -4, scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`w-12 h-12 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center transition-all duration-300 ${social.color} group`}
                     title={social.label}
                   >
-                    <span className="text-lg text-white/60 group-hover:text-white">{social.icon}</span>
+                    <span className="text-lg text-white/40 group-hover:scale-110 transition-transform">{social.icon}</span>
                   </motion.a>
                 ))}
               </div>
