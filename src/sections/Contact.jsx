@@ -151,42 +151,32 @@ const Contact = () => {
                 {
                   icon: '📧',
                   label: 'Gmail',
-                  value: 'chetan.jadhav@gmail.com',
-                  href: 'mailto:chetan.jadhav@gmail.com',
+                  value: 'jadhavchetan848@gmail.com',
+                  href: 'mailto:jadhavchetan848@gmail.com',
                   color: 'from-red-500/20 to-red-600/20',
                   borderColor: 'group-hover:border-red-500/50',
                   protocol: 'SMTP/GMAIL',
                   id: '01'
                 },
                 {
-                  icon: '📧',
-                  label: 'Proton',
-                  value: 'chetan.jadhav@proton.me',
-                  href: 'mailto:chetan.jadhav@proton.me',
-                  color: 'from-purple-500/20 to-purple-600/20',
-                  borderColor: 'group-hover:border-purple-500/50',
-                  protocol: 'SMTP/PROTON',
+                  icon: '🏆',
+                  label: 'LeetCode',
+                  value: 'Chetan-1',
+                  href: 'https://leetcode.com/u/Chetan-1/',
+                  color: 'from-orange-500/20 to-orange-600/20',
+                  borderColor: 'group-hover:border-orange-500/50',
+                  protocol: 'HTTPS/LEETCODE',
                   id: '02'
-                },
-                {
-                  icon: '📧',
-                  label: 'Tuta',
-                  value: 'chetan.jadhav@tuta.io',
-                  href: 'mailto:chetan.jadhav@tuta.io',
-                  color: 'from-emerald-500/20 to-emerald-600/20',
-                  borderColor: 'group-hover:border-emerald-500/50',
-                  protocol: 'SMTP/TUTA',
-                  id: '03'
                 },
                 {
                   icon: '💼',
                   label: 'LinkedIn',
-                  value: 'chetanjadhav01',
-                  href: 'https://linkedin.com/in/chetanjadhav01',
+                  value: 'chetan-jadhav',
+                  href: 'https://in.linkedin.com/in/chetan-jadhav-861967289',
                   color: 'from-sky-500/20 to-sky-600/20',
                   borderColor: 'group-hover:border-sky-500/50',
                   protocol: 'HTTPS/LINKEDIN',
-                  id: '04'
+                  id: '03'
                 },
                 {
                   icon: '🐙',
@@ -196,7 +186,7 @@ const Contact = () => {
                   color: 'from-indigo-500/20 to-indigo-600/20',
                   borderColor: 'group-hover:border-indigo-500/50',
                   protocol: 'HTTPS/GITHUB',
-                  id: '05'
+                  id: '04'
                 },
               ].map((contact, idx) => (
                 <motion.a
