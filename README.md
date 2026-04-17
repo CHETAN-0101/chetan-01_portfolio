@@ -140,19 +140,6 @@ portfolio/
 - Wireframe overlay with opacity effects
 - Dynamic lighting with multiple point lights
 
-## 🚀 Deployment
-
-### Vercel (Recommended)
-```bash
-npm install -g vercel
-vercel
-```
-
-### Netlify
-1. Connect your GitHub repository
-2. Set build command: `npm run build`
-3. Set publish directory: `dist`
-4. Deploy!
 
 ### GitHub Pages
 ```bash
